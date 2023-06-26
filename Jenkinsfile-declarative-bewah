@@ -27,16 +27,14 @@ pipeline{
                 sh "mvn clean package"
             }
         }
-        stage('codequality'){
-            steps{
-                sh "echo 'performing codequality analysis'"
-                sh "mvn sonar:sonar"
-            }
-        }
-        stage('upload to nexus'){
-            steps{
-                sh "mvn deploy"
-            }
-        }
+/*
+ stage('SonarQubeReport'){
+ sh "${mavenHome}/bin/mvn clean sonar:sonar"
+ }
+ 
+ 
+ stage('UploadArtifactIntoNexus'){
+ sh "${mavenHome}/bin/mvn clean deploy"
+ }
     }
 }
